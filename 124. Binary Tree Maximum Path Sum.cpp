@@ -1,9 +1,9 @@
-#include <vector>
-#include <unordered_map>
 #include <algorithm>
 #include <iostream>
-#include <queue>
 #include <limits.h>
+#include <queue>
+#include <unordered_map>
+#include <vector>
 using namespace std;
 
 using namespace std;
@@ -57,7 +57,7 @@ int dfs(TreeNode *root, int &maxPath)
     }
     curr = firstMax + secondMax + root->val;
     maxPath = max(maxPath, curr);
-    return max(firstMax,secondMax);
+    return max(firstMax, secondMax);
 }
 int bestSumAnyTreePath(vector<int> &parents, vector<int> &values)
 {
