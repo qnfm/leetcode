@@ -4,6 +4,7 @@
         "unordered_set": "cpp",
         "utility": "cpp",
         "xstring": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "string": "cpp"
     }
 }
