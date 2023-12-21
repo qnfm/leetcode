@@ -28,8 +28,6 @@ class Solution
 public:
     int maxPower(string s)
     {
-        if (s.size() == 1)
-            return 1;
         int cur = 0, r = 0;
         for (int i = 1; i < s.size(); i++)
         {
