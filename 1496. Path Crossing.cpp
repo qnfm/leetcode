@@ -2,9 +2,12 @@
 https://medium.com/@gulshansharma014/call-to-implicitly-deleted-default-constructor-of-unordered-map-pair-int-int-int-d3b2a6da0b41
 https://stackoverflow.com/questions/62869571/call-to-implicitly-deleted-default-constructor-of-unordered-set-vectorint
 */
+#pragma GCC optimize("O3", "unroll-loops")
+#include <iostream>
 #include <string>
 #include <unordered_set>
 using namespace std;
+
 class Solution
 {
 public:
@@ -39,3 +42,11 @@ public:
         return false;
     }
 };
+
+auto init = []()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    return 'c';
+}();
