@@ -22,6 +22,7 @@ public:
 
 private:
     int r = INT_MAX;
+    unordered_set<string> set;
     int encodelen(string s)
     {
         if (s.size() == 0 || s.size() == 1)
