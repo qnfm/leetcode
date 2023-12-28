@@ -1,4 +1,5 @@
 #include <string>
+#include <unordered_set>
 using namespace std;
 class Solution
 {
@@ -10,7 +11,11 @@ public:
         for (int i = 0; i < s.size(); i++)
         {
             string cur = s.substr(0, i) + s.substr(i + 1);
-            r = min(r, getLengthOfOptimalCompression(cur, k - 1));
+            if (!set.contains(cur))
+            {
+                set.insert(cur);
+                r = min(r, getLengthOfOptimalCompression(cur, k - 1));
+            }
         }
         return r;
     }
