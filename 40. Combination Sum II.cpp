@@ -1,3 +1,5 @@
+#include <vector>
+using namespace std;
 /*
 #include <vector>
 #include <array>
@@ -50,3 +52,34 @@ private:
     }
 };
 */
+class Solution
+{
+public:
+    vector<vector<int>> combinationSum(vector<int> &candidates, int target)
+    {
+        vector<int> cur;
+        dfs(candidates, 0, target, cur);
+        return r;
+    }
+
+private:
+    vector<vector<int>> r;
+    void dfs(vector<int> &can, int i, int target, vector<int> cur)
+    {
+        if (target < 0)
+            return;
+        if (target == 0)
+        {
+            r.push_back(cur);
+            return;
+        }
+        for (int j = i; j < can.size(); j++)
+        {
+            if (i && can[i] == can[i - 1])
+                continue;
+            cur.push_back(can[j]);
+            dfs(can, j, target - can[j], cur);
+            cur.pop_back();
+        }
+    }
+};
