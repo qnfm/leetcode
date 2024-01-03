@@ -32,20 +32,17 @@ public:
         }
         node->isword = true;
     }
-
-    bool search(string word)
+    bool helper(string word, TrieNode *node)
     {
-        TrieNode *node = root;
         for (int i = 0; i < word.size(); i++)
         {
             int idx = word[i] - 'a';
             if (word[i] == '.')
             {
-                for (char c = 'a'; c <= 'z'; c++)
+                string tmp = word.substr(i + 1);
+                for (auto child : node->child)
                 {
-                    string tmp(word);
-                    tmp[i] = c;
-                    if (search(tmp))
+                    if (child && helper(tmp, child))
                         return true;
                 }
                 return false;
@@ -55,6 +52,10 @@ public:
             node = node->child[idx];
         }
         return node->isword;
+    }
+    bool search(string word)
+    {
+        return helper(word, root);
     }
 
 private:
