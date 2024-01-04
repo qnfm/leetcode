@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 using namespace std;
 /*
 #include <vector>
@@ -55,30 +56,33 @@ private:
 class Solution
 {
 public:
-    vector<vector<int>> combinationSum(vector<int> &candidates, int target)
+    vector<vector<int>> combinationSum2(vector<int> &candidates, int target)
     {
+        this->target = target;
         vector<int> cur;
-        dfs(candidates, 0, target, cur);
+        sort(candidates.begin(), candidates.end());
+        dfs(candidates, 0, 0, cur);
         return r;
     }
 
 private:
+    int target;
     vector<vector<int>> r;
-    void dfs(vector<int> &can, int i, int target, vector<int> cur)
+    void dfs(vector<int> &can, int i, int sum, vector<int> cur)
     {
-        if (target < 0)
-            return;
-        if (target == 0)
+        if (sum == target)
         {
             r.push_back(cur);
             return;
         }
+        if (target < sum)
+            return;
         for (int j = i; j < can.size(); j++)
         {
-            if (i && can[i] == can[i - 1])
+            if (j > i && can[j] == can[j - 1])
                 continue;
             cur.push_back(can[j]);
-            dfs(can, j, target - can[j], cur);
+            dfs(can, j + 1, sum + can[j], cur);
             cur.pop_back();
         }
     }
