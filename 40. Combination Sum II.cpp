@@ -58,31 +58,29 @@ class Solution
 public:
     vector<vector<int>> combinationSum2(vector<int> &candidates, int target)
     {
-        this->target = target;
         vector<int> cur;
         sort(candidates.begin(), candidates.end());
-        dfs(candidates, 0, 0, cur);
+        dfs(candidates, 0, target, cur);
         return r;
     }
 
 private:
-    int target;
     vector<vector<int>> r;
-    void dfs(vector<int> &can, int i, int sum, vector<int> cur)
+    void dfs(vector<int> &can, int i, int target, vector<int> cur)
     {
-        if (sum == target)
+        if (0 == target)
         {
             r.push_back(cur);
             return;
         }
-        if (target < sum)
+        if (target < 0)
             return;
         for (int j = i; j < can.size(); j++)
         {
             if (j > i && can[j] == can[j - 1])
                 continue;
             cur.push_back(can[j]);
-            dfs(can, j + 1, sum + can[j], cur);
+            dfs(can, j + 1, target - can[j], cur);
             cur.pop_back();
         }
     }
