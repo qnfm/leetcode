@@ -1,5 +1,44 @@
 #include <queue>
 using namespace std;
+/*
+class MedianFinder
+{
+public:
+    MedianFinder()
+    {
+    }
+
+    void addNum(int num)
+    {
+        if (small.empty() || num <= small.top())
+            small.push(num);
+        else
+            large.push(num);
+        if (small.size() < large.size())
+        {
+            small.push(large.top());
+            large.pop();
+        }
+        else if (small.size() - large.size() > 1)
+        {
+            large.push(small.top());
+            small.pop();
+        }
+    }
+
+    double findMedian()
+    {
+        if (small.size() == large.size())
+            return (double)(small.top() + large.top()) / 2;
+        else
+            return small.top();
+    }
+
+private:
+    priority_queue<int> small;
+    priority_queue<int, vector<int>, greater<int>> large;
+};
+*/
 class MedianFinder
 {
 public:
