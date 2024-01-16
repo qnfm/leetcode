@@ -61,8 +61,14 @@ public:
     {
         if (map.contains(val))
             return false;
-        set.push_back(val);
-        map[val] = set.size() - 1;
+        if (end != -1 && end < set.size() - 1)
+            set[++end] = val;
+        else
+        {
+            set.push_back(val);
+            end = set.size() - 1;
+        }
+        map[val] = end;
         return true;
     }
 
@@ -70,20 +76,25 @@ public:
     {
         if (!map.contains(val))
             return false;
-        int last = set.back(), pos = map[val];
+        int last = set[end], pos = map[val];
         map[last] = pos;
         set[pos] = last;
-        set.pop_back();
+        end--;
+        if (end == -1)
+            set.pop_back();
+
         map.erase(val);
         return true;
     }
 
     int getRandom()
     {
-        return set[rand() % set.size()];
+        int sz = (end != -1 && end < set.size()) ? (end + 1) : set.size();
+        return set[rand() % sz];
     }
 
 private:
+    int end = -1;
     unordered_map<int, int> map;
     vector<int> set;
 };
