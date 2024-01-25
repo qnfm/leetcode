@@ -7,7 +7,8 @@ https://leetcode.com/problems/largest-palindromic-number/description/
 #include <vector>
 #include <string>
 using namespace std;
-
+// dp
+/*
 class Solution
 {
 public:
@@ -39,5 +40,30 @@ public:
             }
         }
         return s.substr(r.first, r.second - r.first + 1);
+    }
+};
+*/
+
+class Solution {
+public:
+    string longestPalindrome(const string s) {
+        string res;
+        for(int i = 0; i < s.size(); i++){
+            int left = i, right = i;
+            while(left >= 0 && right < s.size() && s[left]==s[right]){
+                int len = right - left + 1;
+                if(len > res.size()) res = s.substr(left, len);
+                left--;
+                right++;
+            }
+            left = i, right = i + 1;
+            while(left >= 0 && right < s.size() && s[left]==s[right]){
+                int len = right - left + 1;
+                if(len > res.size()) res = s.substr(left, len);
+                left--;
+                right++;
+            }
+        }
+        return res;
     }
 };
