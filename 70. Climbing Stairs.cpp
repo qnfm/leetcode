@@ -60,13 +60,13 @@ class Solution
 public:
     int climbStairs(int n)
     {
-        int cur = 0, prev = 1, twop = 0;
+        int cur = 0, prev = 1, np = 0;
         for (int i = 0; i < n; i++)
         {
-            twop = cur + prev;
-            cur = prev;
-            prev = twop;
+            cur = prev + np;
+            np = prev;
+            prev = cur;
         }
-        return prev;
+        return cur;
     }
 };
