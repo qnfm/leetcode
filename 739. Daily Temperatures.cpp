@@ -7,18 +7,17 @@ class Solution
 public:
     vector<int> dailyTemperatures(vector<int> &t)
     {
-        vector<int> r(t.size(), 0);
-        stack<pair<int, int>> st;
-
+        stack<int> st;
+        vector<int> r(t.size());
         for (int i = 0; i < t.size(); i++)
         {
-            while (!st.empty() && t[i] > st.top().first)
+            while (!st.empty() && t[st.top()] < t[i])
             {
-                auto curr = st.top();
+                auto cur = st.top();
                 st.pop();
-                r[curr.second] = i - curr.second;
+                r[cur] = i - cur;
             }
-            st.push({t[i], i});
+            st.push(i);
         }
         return r;
     }
