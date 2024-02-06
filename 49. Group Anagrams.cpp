@@ -1,3 +1,4 @@
+/*
 #include <vector>
 #include <string>
 #include <array>
@@ -23,6 +24,28 @@ public:
         vector<vector<string>> r;
         for (auto &[k, v] : map)
             r.push_back(v);
+        return r;
+    }
+};
+*/
+#include <vector>
+#include <string>
+#include <algorithm>
+#include <unordered_map>
+using namespace std;
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        unordered_map<string,vector<string>> map;
+        vector<vector<string>> r;
+        for(auto str:strs){
+            string cur = str;
+            sort(cur.begin(),cur.end());
+            map[cur].push_back(str);
+        }
+        for(auto &[k,v] :map){
+            r.push_back(v); 
+        }
         return r;
     }
 };
