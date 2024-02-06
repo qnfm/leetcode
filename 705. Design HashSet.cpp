@@ -25,6 +25,7 @@ public:
 private:
     static const size_t sz = 1e6 + 1;
     bitset<sz> r;
+    // bitset<int(1e6) + 1> r;
 };
 
 /**
