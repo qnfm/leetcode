@@ -25,3 +25,27 @@ public:
         return r;
     }
 };
+
+// bucket sort
+class Solution2 {
+public:
+    string frequencySort(string s) {
+        string r;
+        const int sz = s.size();
+        unordered_map<char,int> map;
+        for(auto c : s) map[c]++;
+        vector<vector<char>> buckets(sz + 1);
+        for(auto& [k,v] : map){
+            buckets[v].push_back(k);
+        }
+        for(int i = sz; i >= 0; i--){
+            if(!buckets[i].empty()){
+                for(auto c: buckets[i]){
+                    string cur(i,c);
+                    r.insert(r.end(),cur.begin(),cur.end());
+                }
+            }
+        }
+        return r;
+    }
+};
