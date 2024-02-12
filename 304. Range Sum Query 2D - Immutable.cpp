@@ -37,7 +37,7 @@ public:
 private:
     int m;
     int n;
-    vector<vector<int>>* prefix;
+    vector<vector<int>> *prefix;
 };
 
 /**
