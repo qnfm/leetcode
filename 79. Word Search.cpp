@@ -29,6 +29,7 @@ private:
     {
         if (i >= row or i < 0 or j >= col or j < 0 or k > word.size() or word[k] != board[i][j])
             return false;
+        // already visit hte last character
         if (k == word.size() - 1)
             return true;
         board[i][j] = '#';
