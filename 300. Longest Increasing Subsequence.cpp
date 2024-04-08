@@ -1,43 +1,23 @@
-#include <iostream>
 #include <vector>
-#include <stack>
 using namespace std;
-
 class Solution
 {
 public:
     int lengthOfLIS(vector<int> &nums)
     {
-        vector<int> st;
-        st.push_back(nums[0]);
-        for (int i = 1; i < nums.size(); i++)
+        const int n = nums.size();
+        vector<int> dp(n, 1);
+        int r = 0;
+
+        for (int i = 0; i < n; i++)
         {
-            if (nums[i] > st.back())
-                st.push_back(nums[i]);
-            else
+            for (int j = i - 1; j >= 0; j--)
             {
-                int lo = 0, hi = st.size() - 1, mid;
-                bool flag = false;
-                while (lo < hi)
-                {
-                    mid = lo + ((hi - lo) >> 1);
-                    if (st[mid] == nums[i])
-                    {
-                        flag = true;
-                        break;
-                    }
-                    else if (st[mid] > nums[i])
-                        hi = mid;
-                    else
-                        lo = mid + 1;
-                }
-                if (flag || lo < st.size())
-                {
-                    mid = flag ? mid : lo;
-                    st[mid] = nums[i];
-                }
+                if (nums[j] < nums[i])
+                    dp[i] = max(dp[i], dp[j] + 1);
             }
+            r = max(r, dp[i]);
         }
-        return st.size();
+        return r;
     }
 };
