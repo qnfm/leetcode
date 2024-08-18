@@ -1,0 +1,68 @@
+# Define the coding style: LLVM, Google, Chromium, Mozilla, WebKit, etc.
+BasedOnStyle: WebKit
+
+# Set the width of an indent
+IndentWidth: 4
+
+# Use tab characters for indentation
+UseTab: Never
+
+# The number of columns to use for tab
+TabWidth: 4
+
+# Column limit (0 means no limit)
+ColumnLimit: 100
+
+# Align pointer and reference operators
+PointerAlignment: Left
+
+# Control how includes are sorted
+SortIncludes: true
+
+# Allow short functions on a single line
+AllowShortFunctionsOnASingleLine: All
+
+# Align trailing comments
+AlignTrailingComments: true
+
+# Control the bin-packing of function parameters
+BinPackArguments: true
+BinPackParameters: true
+
+# Control the placement of braces (BS_Allman, BS_GNU, BS_Linux, BS_Mozilla, BS_Stroustrup, BS_Whitesmiths)
+BraceWrapping:
+  AfterClass: true
+  AfterControlStatement: true
+  AfterEnum: true
+  AfterFunction: true
+  AfterNamespace: false
+  AfterStruct: true
+  AfterUnion: true
+  BeforeCatch: true
+  BeforeElse: true
+  IndentBraces: false
+
+# Control the placement of spaces around operators
+SpaceBeforeParens: ControlStatements
+SpaceInEmptyParentheses: false
+SpacesBeforeTrailingComments: 2
+
+# Include configuration for specific languages
+Language: Cpp
+
+# Specify extra style options specific to C++
+Cpp11BracedListStyle: true
+SpacesInAngles: false
+
+# Penalty options for line breaking
+PenaltyBreakBeforeFirstCallParameter: 19
+PenaltyBreakComment: 300
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 200
+
+# Limit the number of function declarations and definitions per line
+MaxEmptyLinesToKeep: 1
+
+# Define the indentation style for case labels in switch statements
+IndentCaseLabels: true
