@@ -5,8 +5,8 @@ public:
     int numTeams(vector<int>& rating)
     {
         int sum = 0;
-        vector<vector<int>> i(rating.size(), vector<int>(rating.size(),vector<int>(4,-1));
-        vector<vector<int>> d(rating.size(), vector<int>(rating.size(), vector<int>(4,-1)));
+        vector<vector<int>> i(rating.size(), vector<int>(4, -1));
+        vector<vector<int>> d(rating.size(), vector<int>(4, -1));
         for (int idx = 0; idx < rating.size(); idx++) {
             sum += dfs1(rating, idx, 1, i);
             sum += dfs2(rating, idx, 1, d);
